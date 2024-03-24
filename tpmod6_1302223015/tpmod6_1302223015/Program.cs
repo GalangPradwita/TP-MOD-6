@@ -46,7 +46,6 @@
                 catch (OverflowException)
                 {
                     Console.WriteLine("Error: Penambahan Play Count Telah Mencapai Jumlah Maksimum.");
-                    playCount = int.MaxValue;
                 }
                 
             }
@@ -59,35 +58,18 @@
 
         static void Main(string[] args)
         {    
-            try
-            {
+           
                 SayaTubeVideo sayaTubeVideo = new SayaTubeVideo("Tutorial Design By Contract - [Galang]");
                 sayaTubeVideo.PrintVideoDetails();
-                sayaTubeVideo.IncreasePlayCounting(1);
+              
 
                 //Overloop
-                for (int i = 0; i < int.MaxValue; i++){
-                    sayaTubeVideo.IncreasePlayCounting(int.MaxValue);
-                } 
-            }
+                for (int i = 0; i < 10000000; i++){
+                    sayaTubeVideo.IncreasePlayCounting(1);
+                }
 
-            catch (ArgumentNullException ex)
-            {
-                Console.WriteLine($"Terjadi Kesalahan Null Exception: {ex.Message}");
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Terjadi Kesalahan: Argument exception {ex.Message}");
-            }
+                sayaTubeVideo.PrintVideoDetails();
             
-            catch (OverflowException ex)
-            {
-                Console.WriteLine($"Terjadi Overflow: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Terjadi Kesalahan: {ex.Message}");
-            }
              
 
         }
